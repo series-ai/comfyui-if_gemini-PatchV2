@@ -40,7 +40,7 @@ The integration has been implemented with:
 If you want to experiment with the current implementation:
 1. Set `api_provider` to "openrouter"  
 2. Use OpenRouter API key
-3. Select OpenRouter models like `google/gemini-2.5-flash-image-preview:free`
+3. Select OpenRouter models like `google/gemini-3-pro-image-preview:free`
 4. Expect potential issues and error messages
 
 ## Technical Details

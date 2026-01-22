@@ -218,6 +218,12 @@ app.registerExtension({
                 .then(response => response.json())
                 .then(allModels => {
                     if (allModels && allModels.length > 0) {
+                        // Hard guarantee: always include gemini-3-pro-image-preview in the model list
+                        // (even if the backend/provider list changes or fails to return it)
+                        if (!allModels.includes("gemini-3-pro-image-preview")) {
+                            allModels.push("gemini-3-pro-image-preview");
+                        }
+
                         // Filter models based on operation mode
                         let filteredModels = this.filterModelsByOperation(allModels, operationMode);
                         
@@ -231,10 +237,24 @@ app.registerExtension({
                         if (filteredModels.includes(currentModel)) {
                             this.modelWidget.value = currentModel;
                         } else {
-                            // Default to gemini-2.5-flash or first model in the list
-                            const defaultModel = filteredModels.includes("gemini-2.5-flash") 
-                                ? "gemini-2.5-flash" 
-                                : filteredModels[0];
+                            // Prefer good defaults depending on operation mode
+                            const preferredDefaults = (operationMode === "generate_images")
+                                ? [
+                                    "gemini-3-pro-image-preview",
+                                    "google/gemini-3-pro-image-preview:free",
+                                    "google/gemini-3-pro-image-preview",
+                                    "gemini-2.5-flash",
+                                    "gemini-2.5-flash-002"
+                                  ]
+                                : [
+                                    "gemini-2.5-flash",
+                                    "gemini-2.5-pro",
+                                    "gemini-2.5-flash-002",
+                                    "gemini-3-pro-image-preview"
+                                  ];
+
+                            const defaultModel =
+                                preferredDefaults.find(m => filteredModels.includes(m)) || filteredModels[0];
                             this.modelWidget.value = defaultModel;
                         }
                         
@@ -261,7 +281,7 @@ app.registerExtension({
             // Function to filter models based on operation mode
             nodeType.prototype.filterModelsByOperation = function(allModels, operationMode) {
                 const imageCapableModels = [
-                    "gemini-2.5-flash-image-preview",
+                    "gemini-3-pro-image-preview",
                     "gemini-2.5-flash", 
                     "gemini-2.5-flash-002"
                 ];

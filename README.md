@@ -1,4 +1,4 @@
-# ComfyUI-IF_Gemini
+# comfyui-if_gemini-PatchV2
 Enjoy Google Gemini API for ComfyUI generate images, transcribe audio, sumarize videos. Making a separate implemetation of my old IF_AI tools for easy installation
 <img width="2559" height="1232" alt="image" src="https://github.com/user-attachments/assets/010a3937-bd79-4577-a3b4-fdf0d6f2762d" />
 <img width="1920" height="1075" alt="image" src="https://github.com/user-attachments/assets/a3fb04fd-ace6-4208-8df2-6887501eb879" />
@@ -41,7 +41,7 @@ Enjoy Google Gemini API for ComfyUI generate images, transcribe audio, sumarize 
 
   🎨 Free Image Model Access
 
-  Use model: google/gemini-2.5-flash-image-preview:free for completely free image analysis
+  Use model: google/gemini-3-pro-image-preview:free for completely free image analysis
   through OpenRouter!
 
   🔧 Files Modified
@@ -56,12 +56,12 @@ Enjoy Google Gemini API for ComfyUI generate images, transcribe audio, sumarize 
 1. Clone this repository into your ComfyUI custom nodes folder:
 ```bash
 cd ComfyUI/custom_nodes
-git clone https://github.com/if-ai/ComfyUI-IF_Gemini
+git clone https://github.com/if-ai/comfyui-if_gemini-PatchV2
 ```
 
 2. Install the required Python packages:
 ```bash
-cd ComfyUI-IF_Gemini
+cd comfyui-if_gemini-PatchV2
 pip install -r requirements.txt
 ```
 

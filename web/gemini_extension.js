@@ -3,7 +3,7 @@ import { app } from "/scripts/app.js";
 import "./js/gemini_node.js";
 
 app.registerExtension({
-    name: "ComfyUI.IF_Gemini.Main",
+    name: "ComfyUI.comfyui-if_gemini-PatchV2.Main",
     init() {
         console.log("Gemini Node extension initialized");
     }

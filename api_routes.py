@@ -207,7 +207,7 @@ try:
                         "gemini-2.5-flash",
                         "gemini-2.5-pro",
                         "gemini-2.5-flash-002",
-                        "gemini-2.5-flash-image-preview",
+                        "gemini-3-pro-image-preview",
                         "gemini-2.0-flash-exp",
                         "gemini-2.0-pro",
                         "gemini-2.0-flash"
@@ -241,7 +241,7 @@ try:
                         "status": "error",
                         "message": error_detail,
                         "models": ["gemini-2.5-flash", "gemini-2.5-pro", "gemini-2.5-flash-002",
-                                   "gemini-2.5-flash-image-preview"]
+                                   "gemini-3-pro-image-preview"]
                     })
                     
             except Exception as e:
@@ -328,7 +328,7 @@ try:
                         "gemini-2.5-flash",
                         "gemini-2.5-pro",
                         "gemini-2.5-flash-002",
-                        "gemini-2.5-flash-image-preview"
+                        "gemini-3-pro-image-preview"
                     ])
                 
                 # Use the get_available_models function from gemini_node.py
@@ -345,7 +345,7 @@ try:
                     "gemini-2.5-flash",
                     "gemini-2.5-pro",
                     "gemini-2.5-flash-002",
-                    "gemini-2.5-flash-image-preview"
+                    "gemini-3-pro-image-preview"
                 ])
         
         # Mark routes as registered to prevent duplicate registration

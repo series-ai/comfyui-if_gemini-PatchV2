@@ -1,4 +1,4 @@
-# OpenRouter Integration for ComfyUI-IF_Gemini
+# OpenRouter Integration for comfyui-if_gemini-PatchV2
 
 This ComfyUI node now supports using OpenRouter as a proxy to access Gemini models. OpenRouter provides access to multiple AI models including Google's Gemini through a unified API.
 
@@ -42,7 +42,7 @@ Create a `.env` file in your ComfyUI root or custom node directory:
 OPENROUTER_API_KEY=sk-or-v1-your-key-here
 GEMINI_BASE_URL=https://openrouter.ai/api/v1
 OPENROUTER_SITE_URL=https://your-site.com
-OPENROUTER_SITE_NAME=ComfyUI-IF_Gemini
+OPENROUTER_SITE_NAME=comfyui-if_gemini-PatchV2
 ```
 
 ### Method 3: External API Key (Node Input)
@@ -55,8 +55,8 @@ The node now includes OpenRouter-specific model names:
 
 - `google/gemini-2.5-flash` - Standard Gemini 2.5 Flash
 - `google/gemini-2.5-pro` - Gemini 2.5 Pro 
-- `google/gemini-2.5-flash-image-preview` - Image analysis model
-- `google/gemini-2.5-flash-image-preview:free` - Free tier image model ⭐
+- `google/gemini-3-pro-image-preview` - Image analysis model
+- `google/gemini-3-pro-image-preview:free` - Free tier image model ⭐
 - `google/gemini-2.0-flash-exp` - Experimental 2.0 Flash
 
 ## Usage Examples
@@ -66,21 +66,21 @@ The node now includes OpenRouter-specific model names:
 **Method A: Using API Provider Selector (Easiest)**
 1. Set your `OPENROUTER_API_KEY` environment variable
 2. In the node, set `api_provider` to "openrouter"
-3. Select any OpenRouter model (e.g., `google/gemini-2.5-flash-image-preview:free`)
+3. Select any OpenRouter model (e.g., `google/gemini-3-pro-image-preview:free`)
 4. Use the node normally - it will automatically route through OpenRouter
 
 **Method B: Using Environment Configuration**
 1. Set your `OPENROUTER_API_KEY` environment variable
 2. Set `GEMINI_BASE_URL=https://openrouter.ai/api/v1` 
 3. Leave `api_provider` as "auto"
-4. Select any Gemini model (e.g., `google/gemini-2.5-flash-image-preview:free`)
+4. Select any Gemini model (e.g., `google/gemini-3-pro-image-preview:free`)
 5. Use the node normally - it will automatically route through OpenRouter
 
 ### Image Analysis with Free Gemini Model
 
 For the new free image preview model mentioned in your request:
 
-1. Use model: `google/gemini-2.5-flash-image-preview:free`
+1. Use model: `google/gemini-3-pro-image-preview:free`
 2. Set `api_provider` to "openrouter" (easiest)
 3. Provide images in the `images` input
 4. Set operation mode to "analysis" 
@@ -116,7 +116,7 @@ The integration enhances the existing base URL proxy feature:
 
 4. **Model Name Handling**: Supports both formats:
    - Standard: `gemini-2.5-flash`
-   - OpenRouter: `google/gemini-2.5-flash-image-preview:free`
+   - OpenRouter: `google/gemini-3-pro-image-preview:free`
 
 5. **Headers & Metadata**: Automatically adds OpenRouter-specific headers for tracking
 
@@ -124,7 +124,7 @@ The integration enhances the existing base URL proxy feature:
 
 ## Benefits of OpenRouter Integration
 
-- **Access to Free Models**: Use `google/gemini-2.5-flash-image-preview:free`
+- **Access to Free Models**: Use `google/gemini-3-pro-image-preview:free`
 - **Better Rate Limits**: OpenRouter may have different rate limiting
 - **Model Availability**: Access to models that might not be available directly
 - **Unified Billing**: Single account for multiple AI providers
@@ -137,7 +137,7 @@ The integration enhances the existing base URL proxy feature:
 Use the included test script to verify your OpenRouter integration:
 
 ```bash
-cd /path/to/ComfyUI/custom_nodes/ComfyUI-IF_Gemini
+cd /path/to/ComfyUI/custom_nodes/comfyui-if_gemini-PatchV2
 python test_openrouter.py
 ```
 
@@ -157,14 +157,14 @@ The test script will:
    ```
 
 2. **ComfyUI Test**: Create a simple workflow:
-   - Add an IF_Gemini node
+   - Add an comfyui-if_gemini-PatchV2 node
    - Set `api_provider` to "openrouter"
    - Use model `google/gemini-2.0-flash-exp`
    - Add a simple text prompt
    - Check the console for "Using openrouter client" message
 
 3. **Image Analysis Test**: For image models:
-   - Use model `google/gemini-2.5-flash-image-preview:free`
+   - Use model `google/gemini-3-pro-image-preview:free`
    - Set operation_mode to "analysis"
    - Provide an image input
    - Should work without HTML errors in logs
@@ -203,7 +203,7 @@ This integration is fully backwards compatible:
 - Restart ComfyUI after installing new dependencies
 
 ### Model not found
-- Try using OpenRouter format: `google/gemini-2.5-flash-image-preview:free`
+- Try using OpenRouter format: `google/gemini-3-pro-image-preview:free`
 - Check OpenRouter documentation for current model availability
 - Some models may be region-restricted
 - Verify your OpenRouter account has sufficient credits
@@ -219,6 +219,6 @@ This integration is fully backwards compatible:
 
 ## OpenRouter Model Pricing
 
-The `google/gemini-2.5-flash-image-preview:free` model is completely free to use through OpenRouter, making it perfect for testing and development.
+The `google/gemini-3-pro-image-preview:free` model is completely free to use through OpenRouter, making it perfect for testing and development.
 
 Check [OpenRouter's pricing page](https://openrouter.ai/models) for current rates on other models.
